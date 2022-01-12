@@ -1,23 +1,17 @@
 const express = require("express");
-const products = require("./data/products");
 const dotenv = require("dotenv");
+const connectDB = require("./config/database");
+const userRoutes = require("./routes/userRoutes");
+const productRoutes = require("./routes/productRoutes");
 
 const app = express();
 dotenv.config();
+connectDB();
+app.use(express.json({ limit: "50mb" }));
 
-app.get("/", (req, res) => {
-  res.send("API is running...");
-});
+app.use("/api/users", userRoutes);
+app.use("/api/products", productRoutes);
 
-app.get("/api/products", (req, res) => {
-  res.json(products);
-});
-
-app.get("/api/products/:id", (req, res) => {
-  const product = products.find((n) => n.sku === req.params.id);
-  res.send(product);
-});
-
-// configure in env file, else default to port 3000
+// configure in env file, else default to port 5000
 const port = process.env.PORT || 5000;
 app.listen(port, console.log(`Server has started on port ${port}.`));

@@ -4,7 +4,9 @@
   "description": "- React \r - Redux \r - MongoDB or Firestore database",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon backend/server.js"
+    "start": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend",
+    "app": "concurrently \"npm start\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -17,8 +19,13 @@
   },
   "homepage": "https://github.com/Mighty-Jaxx-International-Pte-Ltd/Coding-Challenge-for-Web-Engineers#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "concurrently": "^7.0.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
+    "express-async-handler": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.1.6",
     "nodemon": "^2.0.15"
   }
 }
