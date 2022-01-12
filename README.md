@@ -1,4 +1,4 @@
-# Coding Challenge for Web Engineers
+# Coding Challenge
 
 ## Set up
 - Clone the repositoy
